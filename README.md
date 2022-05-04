@@ -1,6 +1,6 @@
 # GSM
 
-GSM-7 encoding for Elixir (WITHOUT extension chars. This is forked from _https://github.com/l1h3r/gsm_
+GSM-7 encoding for Elixir (WITHOUT extension chars). This is forked from _https://github.com/l1h3r/gsm_
 
 [GSM 03.38](https://en.wikipedia.org/wiki/GSM_03.38)
 
