@@ -6,7 +6,7 @@ defmodule GSM.Conversion do
   #
   # https://github.com/threez/smspromote/blob/master/lib/smspromote/encoding.rb
   #
-  @base %{
+  @conversion %{
     # COMMERCIAL AT
     0x0040 => "\x00",
     # POUND SIGN
@@ -265,34 +265,6 @@ defmodule GSM.Conversion do
     0x00E0 => "\x7F"
   }
 
-  @extended %{
-    # FORM FEED
-    0x000C => "\x1B\x0A",
-    # CIRCUMFLEX ACCENT
-    0x005E => "\x1B\x14",
-    # LEFT CURLY BRACKET
-    0x007B => "\x1B\x28",
-    # RIGHT CURLY BRACKET
-    0x007D => "\x1B\x29",
-    # REVERSE SOLIDUS
-    0x005C => "\x1B\x2F",
-    # LEFT SQUARE BRACKET
-    0x005B => "\x1B\x3C",
-    # TILDE
-    0x007E => "\x1B\x3D",
-    # RIGHT SQUARE BRACKET
-    0x005D => "\x1B\x3E",
-    # VERTICAL LINE
-    0x007C => "\x1B\x40",
-    # EURO SIGN
-    0x20AC => "\x1B\x65"
-  }
-
-  @conversion Map.merge(@base, @extended)
-
   @spec conversion :: map
   def conversion, do: @conversion
-
-  @spec extended :: map
-  def extended, do: @extended
 end

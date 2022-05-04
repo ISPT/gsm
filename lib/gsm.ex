@@ -12,9 +12,6 @@ defmodule GSM do
     end
   end
 
-  # Extended (2-byte) GSM-7 characters
-  @extended GSM.Conversion.extended()
-
   # UTF-8 to GSM-7 character mapping
   @u2g GSM.Conversion.conversion()
 
@@ -70,32 +67,6 @@ defmodule GSM do
     |> Enum.find(&(gsm_char?(&1) == false))
     |> is_nil()
   end
-
-  @doc """
-  Returns the number of characters required to send the given text via SMS
-  """
-  @spec size(binary, atom) :: integer
-  def size(_, _ \\ :gsm)
-
-  def size(text, :unicode) do
-    text
-    |> String.codepoints()
-    |> Enum.count()
-  end
-
-  def size(text, :gsm) do
-    text
-    |> String.codepoints()
-    |> Enum.count(&double?/1)
-    |> Kernel.+(size(text, :unicode))
-  end
-
-  @doc """
-  Checks if the given character is a 2-byte GSM-7 character
-  """
-  @spec double?(binary) :: boolean
-  def double?(<<char::utf8>>), do: Map.has_key?(@extended, char)
-  def double?(_), do: false
 
   # ======= #
   # Private #
